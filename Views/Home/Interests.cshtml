@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuhan Vimalan - Mine Interesser</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #fff;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: linear-gradient(160deg, #0a0f1a 0%, #1a1f3a 40%, #0d2137 100%);
+            color: #e8eaf0;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -17,60 +18,93 @@
             padding: 2rem;
         }
         .container {
-            max-width: 800px;
+            max-width: 860px;
             width: 100%;
-            background: rgba(255,255,255,0.07);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 3.5rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
         }
         .header {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
         }
         .header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.3rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, #a0c4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .header p {
+        .header .subtitle {
             font-size: 1.1rem;
-            opacity: 0.8;
+            font-weight: 300;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+        .header .intro {
+            font-size: 0.95rem;
+            opacity: 0.6;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
         .interests-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
         }
         .interest-card {
-            background: rgba(255,255,255,0.1);
-            border-radius: 14px;
-            padding: 1.5rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 1.8rem;
             text-align: center;
-            transition: transform 0.2s, background 0.2s;
+            transition: all 0.3s ease;
         }
         .interest-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.18);
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(160,196,255,0.2);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+        .interest-card.centered {
+            grid-column: 1 / -1;
+            max-width: 50%;
+            justify-self: center;
         }
         .interest-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.7rem;
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
         }
         .interest-card h3 {
-            font-size: 1.15rem;
-            margin-bottom: 0.4rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
         .interest-card p {
-            font-size: 0.9rem;
-            opacity: 0.75;
-            line-height: 1.4;
+            font-size: 0.88rem;
+            opacity: 0.65;
+            line-height: 1.5;
         }
         .footer {
             text-align: center;
-            margin-top: 2.5rem;
-            opacity: 0.6;
-            font-size: 0.85rem;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            opacity: 0.4;
+            font-size: 0.8rem;
+            font-weight: 300;
+        }
+        @@media (max-width: 600px) {
+            .interests-grid { grid-template-columns: 1fr; }
+            .interest-card.centered { max-width: 100%; }
+            .container { padding: 2rem; }
+            .header h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -78,39 +112,37 @@
     <div class="container">
         <div class="header">
             <h1>Kuhan Vimalan</h1>
-            <p>Systemutvikler &mdash; Mine Interesser</p>
+            <p class="subtitle">Systemutvikler &mdash; Mine Interesser</p>
+            <p class="intro">En nysgjerrig og engasjert utvikler som trives med å lære, bygge og utforske – både digitalt og i den virkelige verden.</p>
         </div>
 
         <div class="interests-grid">
             <div class="interest-card">
                 <div class="icon">💻</div>
                 <h3>Programmering</h3>
-                <p>Elsker å bygge webapplikasjoner med C#, .NET, Blazor og React.</p>
+                <p>Brenner for å bygge webapplikasjoner med C#, .NET, Blazor og React. Trives best når kode blir til noe som gjør hverdagen enklere for folk.</p>
             </div>
             <div class="interest-card">
                 <div class="icon">🏋️</div>
                 <h3>Trening</h3>
-                <p>Holder meg aktiv med styrketrening og løping.</p>
-            </div>
-            <div class="interest-card">
-                <div class="icon">🎮</div>
-                <h3>Gaming</h3>
-                <p>Liker å spille strategispill og utforske nye titler.</p>
+                <p>Jeg holder meg aktiv med styrketrening og prøver å være konsekvent med treningsrutinene mine.</p>
             </div>
             <div class="interest-card">
                 <div class="icon">📚</div>
                 <h3>Læring</h3>
-                <p>Alltid nysgjerrig – leser om teknologi, UX-design og nye rammeverk.</p>
+                <p>Alltid nysgjerrig – leser om teknologi, AI, UX-design og nye rammeverk.</p>
+
+
             </div>
-            <div class="interest-card">
+            <div class="interest-card"> 
                 <div class="icon">🌍</div>
                 <h3>Reise</h3>
-                <p>Liker å oppleve nye kulturer og steder.</p>
+                <p>Elsker å oppleve nye kulturer og steder sammen med min forlovede.</p>
             </div>
-            <div class="interest-card">
-                <div class="icon">☕</div>
-                <h3>Kaffe</h3>
-                <p>En god kopp kaffe er den beste starten på dagen.</p>
+            <div class="interest-card centered">
+                <div class="icon">🎮</div>
+                <h3>Gaming</h3>
+                <p>Liker å spille strategispill og utforske nye titler.</p>
             </div>
         </div>
 

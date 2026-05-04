@@ -6,7 +6,7 @@ namespace MyCvWebApp.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Interests");
         }
 
         public IActionResult Interests()
