@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min CV</title>
+    <style>
+        .qr-section {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .qr-section p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="qr-section">
+        <p>Scan QR-koden for å se mine interesser:</p>
+        <div id="qrcode"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script>
+        var baseUrl = window.location.origin;
+        new QRCode(document.getElementById("qrcode"), {
+            text: baseUrl + "/Home/Interests",
+            width: 180,
+            height: 180
+        });
+    </script>
+</body>
+</html>
