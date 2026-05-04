@@ -114,23 +114,10 @@
             </div>
         </div>
 
-        <div class="qr-section" style="text-align:center; margin-top:2.5rem;">
-            <h3 style="margin-bottom:0.8rem;">📱 Scan for å dele denne siden</h3>
-            <img id="qrCode" alt="QR-kode til denne siden"
-                 style="width:180px; height:180px; border-radius:10px; background:#fff; padding:8px;" />
-            <p style="opacity:0.6; font-size:0.85rem; margin-top:0.5rem;">Del med venner og arbeidsgivere!</p>
-        </div>
-
         <div class="footer">
             <p>Scannet fra CV-en min &bull; Kuhan Vimalan &bull; kuhan2001@hotmail.com</p>
         </div>
     </div>
 
-    <script>
-        // Genererer QR-kode som peker til denne sidens URL
-        const pageUrl = encodeURIComponent(window.location.href);
-        document.getElementById('qrCode').src =
-            `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${pageUrl}`;
-    </script>
 </body>
 </html>
