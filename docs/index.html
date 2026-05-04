@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuhan Vimalan - Mine Interesser</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -27,10 +30,7 @@
             padding: 3.5rem;
             box-shadow: 0 20px 60px rgba(0,0,0,0.4);
         }
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
+        .header { text-align: center; margin-bottom: 3rem; }
         .header h1 {
             font-size: 2.5rem;
             font-weight: 700;
@@ -40,19 +40,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .header .subtitle {
-            font-size: 1.1rem;
-            font-weight: 300;
-            opacity: 0.7;
-            margin-bottom: 1rem;
-        }
-        .header .intro {
-            font-size: 0.95rem;
-            opacity: 0.6;
-            max-width: 500px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
+        .subtitle { font-size: 1.1rem; font-weight: 300; opacity: 0.7; margin-bottom: 1rem; }
+        .intro { font-size: 0.95rem; opacity: 0.6; max-width: 500px; margin: 0 auto; line-height: 1.6; }
         .interests-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -65,6 +54,7 @@
             padding: 1.8rem;
             text-align: center;
             transition: all 0.3s ease;
+            cursor: default;
         }
         .interest-card:hover {
             transform: translateY(-4px);
@@ -77,28 +67,18 @@
             max-width: 50%;
             justify-self: center;
         }
-        .interest-card .icon {
-            font-size: 2.2rem;
-            margin-bottom: 0.8rem;
-        }
-        .interest-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        .interest-card p {
-            font-size: 0.88rem;
-            opacity: 0.65;
-            line-height: 1.5;
-        }
+        .icon { font-size: 2.2rem; margin-bottom: 0.8rem; }
+        .interest-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .interest-card p { font-size: 0.88rem; opacity: 0.65; line-height: 1.5; }
         .footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 1.5rem;
+            text-align: center; margin-top: 3rem; padding-top: 1.5rem;
             border-top: 1px solid rgba(255,255,255,0.06);
-            opacity: 0.4;
-            font-size: 0.8rem;
-            font-weight: 300;
+            opacity: 0.4; font-size: 0.8rem; font-weight: 300;
+        }
+        .fade-in { animation: fadeIn 0.6s ease forwards; opacity: 0; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         @media (max-width: 600px) {
             .interests-grid { grid-template-columns: 1fr; }
@@ -109,44 +89,101 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Kuhan Vimalan</h1>
-            <p class="subtitle">Systemutvikler &mdash; Mine Interesser</p>
-            <p class="intro">En nysgjerrig og engasjert utvikler som trives med å lære, bygge og utforske – både digitalt og i den virkelige verden.</p>
-        </div>
+    <div id="root"></div>
 
-        <div class="interests-grid">
-            <div class="interest-card">
-                <div class="icon">💻</div>
-                <h3>Programmering</h3>
-                <p>Brenner for å bygge webapplikasjoner med C#, .NET, Blazor og React. Trives best når kode blir til noe som gjør hverdagen enklere for folk.</p>
-            </div>
-            <div class="interest-card">
-                <div class="icon">🏋️</div>
-                <h3>Trening</h3>
-                <p>Jeg holder meg aktiv med styrketrening og prøver å være konsekvent med treningsrutinene mine.</p>
-            </div>
-            <div class="interest-card">
-                <div class="icon">📚</div>
-                <h3>Læring</h3>
-                <p>Alltid nysgjerrig – leser om teknologi, AI, UX-design og nye rammeverk.</p>
-            </div>
-            <div class="interest-card">
-                <div class="icon">🌍</div>
-                <h3>Reise</h3>
-                <p>Jeg elsker å oppleve nye kulturer og steder sammen med min forlovede.</p>
-            </div>
-            <div class="interest-card centered">
-                <div class="icon">🎮</div>
-                <h3>Gaming</h3>
-                <p>Liker å spille strategispill og utforske nye titler.</p>
-            </div>
-        </div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
 
-        <div class="footer">
-            <p>Scannet fra CV-en min &bull; Kuhan Vimalan &bull; kuhan2001@hotmail.com</p>
-        </div>
-    </div>
+        const interests = [
+            {
+                icon: "💻",
+                title: "Programmering",
+                description: "Brenner for å bygge webapplikasjoner med C#, .NET, Blazor og React. Trives best når kode blir til noe som gjør hverdagen enklere for folk."
+            },
+            {
+                icon: "🏋️",
+                title: "Trening",
+                description: "Jeg holder meg aktiv med styrketrening og prøver å være konsekvent med treningsrutinene mine."
+            },
+            {
+                icon: "📚",
+                title: "Læring",
+                description: "Alltid nysgjerrig – leser om teknologi, AI, UX-design og nye rammeverk."
+            },
+            {
+                icon: "🌍",
+                title: "Reise",
+                description: "Jeg elsker å oppleve nye kulturer og steder sammen med min forlovede."
+            }
+        ];
+
+        const centeredInterest = {
+            icon: "🎮",
+            title: "Gaming",
+            description: "Liker å spille strategispill og utforske nye titler."
+        };
+
+        function InterestCard({ icon, title, description, centered, delay }) {
+            const [visible, setVisible] = useState(false);
+
+            useEffect(() => {
+                const timer = setTimeout(() => setVisible(true), delay);
+                return () => clearTimeout(timer);
+            }, [delay]);
+
+            return (
+                <div
+                    className={`interest-card ${centered ? "centered" : ""} ${visible ? "fade-in" : ""}`}
+                    style={{ animationDelay: `${delay}ms`, opacity: visible ? undefined : 0 }}
+                >
+                    <div className="icon">{icon}</div>
+                    <h3>{title}</h3>
+                    <p>{description}</p>
+                </div>
+            );
+        }
+
+        function App() {
+            const [headerVisible, setHeaderVisible] = useState(false);
+
+            useEffect(() => {
+                setHeaderVisible(true);
+            }, []);
+
+            return (
+                <div className="container">
+                    <div className={`header ${headerVisible ? "fade-in" : ""}`}>
+                        <h1>Kuhan Vimalan</h1>
+                        <p className="subtitle">Systemutvikler — Mine Interesser</p>
+                        <p className="intro">
+                            En nysgjerrig og engasjert utvikler som trives med å lære, bygge og utforske
+                            – både digitalt og i den virkelige verden.
+                        </p>
+                    </div>
+
+                    <div className="interests-grid">
+                        {interests.map((item, index) => (
+                            <InterestCard
+                                key={item.title}
+                                {...item}
+                                delay={200 + index * 150}
+                            />
+                        ))}
+                        <InterestCard
+                            {...centeredInterest}
+                            centered={true}
+                            delay={200 + interests.length * 150}
+                        />
+                    </div>
+
+                    <div className="footer">
+                        <p>Scannet fra CV-en min • Kuhan Vimalan • kuhan2001@hotmail.com</p>
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
 </body>
 </html>
